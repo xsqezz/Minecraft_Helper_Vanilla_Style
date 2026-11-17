@@ -24,6 +24,7 @@ public final class VanillaButtonClient implements ClientModInitializer {
     private static final int BUTTON_MIN_WIDTH = 78;
     private static final int BUTTON_GAP = 2;
     private static final int ROW_HEIGHT = BUTTON_HEIGHT + BUTTON_GAP;
+    private static final double PLAYER_RANGE_SQUARED = 100.0 * 100.0;
 
     private static boolean enabled = true;
     private static boolean vWasDown;
@@ -72,26 +73,24 @@ public final class VanillaButtonClient implements ClientModInitializer {
             return;
         }
 
-        List<String> visiblePlayers = new ArrayList<>();
-        Vec3d lookDirection = client.player.getRotationVec(1.0F);
+        List<String> nearbyPlayers = new ArrayList<>();
+        Vec3d localPlayerPosition = client.player.getEyePos();
 
         for (PlayerEntity other : client.world.getPlayers()) {
-            if (other == client.player || other.isSpectator() || other.isInvisibleTo(client.player)) {
+            if (other == client.player) {
                 continue;
             }
 
-            Vec3d directionToPlayer = other.getEyePos().subtract(client.player.getEyePos());
-            if (directionToPlayer.lengthSquared() == 0.0
-                    || lookDirection.dotProduct(directionToPlayer.normalize()) <= 0.0
-                    || !client.player.canSee(other)) {
+            Vec3d difference = other.getEyePos().subtract(localPlayerPosition);
+            if (difference.lengthSquared() > PLAYER_RANGE_SQUARED) {
                 continue;
             }
 
-            visiblePlayers.add(other.getName().getString());
+            nearbyPlayers.add(other.getName().getString());
         }
 
-        visiblePlayers.sort(String.CASE_INSENSITIVE_ORDER);
-        buttonLabels = visiblePlayers.isEmpty() ? List.of("Vanilla") : List.copyOf(visiblePlayers);
+        nearbyPlayers.sort(String.CASE_INSENSITIVE_ORDER);
+        buttonLabels = nearbyPlayers.isEmpty() ? List.of("Vanilla") : List.copyOf(nearbyPlayers);
     }
 
     private static void render(DrawContext context, RenderTickCounter tickCounter) {
