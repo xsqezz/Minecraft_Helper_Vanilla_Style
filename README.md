@@ -1,14 +1,16 @@
 # BratanSgg Vanilla Button
 
-Mod Fabric client-side dla Minecrafta 1.21.11. Dodaje przycisk „Vanilla” w lewym górnym rogu ekranu podczas gry.
+Mod Fabric client-side dla Minecrafta 1.21.11. W lewym górnym rogu ekranu pokazuje przyciski z nickami widocznych graczy. Każdy gracz ma osobny przycisk, a lista układa się pionowo. Gdy nikogo nie widać, wyświetla się przycisk „Vanilla”.
+
+Lista obejmuje graczy przed tobą, których klient może zobaczyć bez przeszkód. Nie pokazuje graczy przez ściany.
 
 ## Obsługa
 
-- Naciśnij V, aby przełączyć stan przycisku.
+- Naciśnij V, aby przełączyć kolor i stan przycisków.
 - Naciśnij Prawy Shift, aby odblokować lub ponownie zablokować kursor.
-- Gdy kursor jest odblokowany, kliknij przycisk „Vanilla”, aby zmienić jego stan. Po kliknięciu kursor zablokuje się ponownie.
+- Gdy kursor jest odblokowany, kliknij dowolny przycisk, aby zmienić stan. Po kliknięciu kursor zablokuje się ponownie.
 
-Przełącznik zmienia stan samego przycisku i jego kolor; nie zmienia mechaniki świata.
+Przełącznik zmienia wyłącznie stan i kolor przycisków; nie zmienia mechaniki świata.
 
 ## Instalacja
 
