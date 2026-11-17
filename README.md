@@ -1,8 +1,8 @@
 # BratanSgg Vanilla Button
 
-Mod Fabric client-side dla Minecrafta 1.21.11. W lewym górnym rogu ekranu pokazuje przyciski z nickami widocznych graczy. Każdy gracz ma osobny przycisk, a lista układa się pionowo. Gdy nikogo nie widać, wyświetla się przycisk „Vanilla”.
+Mod Fabric client-side dla Minecrafta 1.21.11. W lewym górnym rogu ekranu pokazuje przyciski z nickami wszystkich innych graczy w promieniu 100 bloków. Każdy gracz ma osobny przycisk, a lista układa się pionowo. Gdy w zasięgu nikogo nie ma, wyświetla się przycisk „Vanilla”.
 
-Lista obejmuje graczy przed tobą, których klient może zobaczyć bez przeszkód. Nie pokazuje graczy przez ściany.
+Lista obejmuje także graczy za ścianą, niewidzialnych i poza polem widzenia, jeśli znajdują się w promieniu 100 bloków i są dostępni klientowi.
 
 ## Obsługa
 
