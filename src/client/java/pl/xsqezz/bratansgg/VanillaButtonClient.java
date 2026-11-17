@@ -9,7 +9,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ public final class VanillaButtonClient implements ClientModInitializer {
     private static final int BUTTON_MIN_WIDTH = 78;
     private static final int BUTTON_GAP = 2;
     private static final int ROW_HEIGHT = BUTTON_HEIGHT + BUTTON_GAP;
-    private static final double PLAYER_RANGE_SQUARED = 100.0 * 100.0;
 
     private static boolean enabled = true;
     private static boolean vWasDown;
@@ -73,24 +71,16 @@ public final class VanillaButtonClient implements ClientModInitializer {
             return;
         }
 
-        List<String> nearbyPlayers = new ArrayList<>();
-        Vec3d localPlayerPosition = client.player.getEyePos();
+        List<String> knownPlayers = new ArrayList<>();
 
         for (PlayerEntity other : client.world.getPlayers()) {
-            if (other == client.player) {
-                continue;
+            if (other != client.player) {
+                knownPlayers.add(other.getName().getString());
             }
-
-            Vec3d difference = other.getEyePos().subtract(localPlayerPosition);
-            if (difference.lengthSquared() > PLAYER_RANGE_SQUARED) {
-                continue;
-            }
-
-            nearbyPlayers.add(other.getName().getString());
         }
 
-        nearbyPlayers.sort(String.CASE_INSENSITIVE_ORDER);
-        buttonLabels = nearbyPlayers.isEmpty() ? List.of("Vanilla") : List.copyOf(nearbyPlayers);
+        knownPlayers.sort(String.CASE_INSENSITIVE_ORDER);
+        buttonLabels = knownPlayers.isEmpty() ? List.of("Vanilla") : List.copyOf(knownPlayers);
     }
 
     private static void render(DrawContext context, RenderTickCounter tickCounter) {
