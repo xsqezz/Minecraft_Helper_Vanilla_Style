@@ -2,7 +2,7 @@
 
 Mod Fabric client-side dla Minecrafta 1.21.11. W lewym górnym rogu ekranu pokazuje przyciski z nickami wszystkich innych graczy, których klient aktualnie ma załadowanych w świecie. Każdy gracz ma osobny przycisk, a lista układa się pionowo. Gdy klient nie zna żadnego innego gracza, wyświetla się przycisk „Vanilla”.
 
-Lista obejmuje także graczy za ścianą, niewidzialnych i poza polem widzenia. Jej zasięg zależy od tego, jak daleko serwer przekazuje klientowi encje graczy; mod nie pobiera listy wszystkich osób na serwerze.
+Obok nicku znajduje się ikona napierśnika materiału, z którego gracz ma najwięcej elementów zbroi. Przy remisie wybierany jest materiał napierśnika; gdy go nie ma, wybór jest alfabetyczny. Lista obejmuje graczy za ścianą, niewidzialnych i poza polem widzenia. Jej zasięg zależy od tego, jak daleko serwer przekazuje klientowi encje graczy; mod nie pobiera listy wszystkich osób na serwerze.
 
 ## Obsługa
 
