@@ -13,7 +13,6 @@ import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public final class VanillaButtonClient implements ClientModInitializer {
@@ -81,10 +80,7 @@ public final class VanillaButtonClient implements ClientModInitializer {
                 continue;
             }
 
-            Vec3d directionToPlayer = other.getPos()
-                    .add(0.0, other.getHeight() * 0.5, 0.0)
-                    .subtract(client.player.getEyePos());
-
+            Vec3d directionToPlayer = other.getEyePos().subtract(client.player.getEyePos());
             if (directionToPlayer.lengthSquared() == 0.0
                     || lookDirection.dotProduct(directionToPlayer.normalize()) <= 0.0
                     || !client.player.canSee(other)) {
@@ -94,7 +90,7 @@ public final class VanillaButtonClient implements ClientModInitializer {
             visiblePlayers.add(other.getName().getString());
         }
 
-        visiblePlayers.sort(Comparator.comparing(String::toLowerCase));
+        visiblePlayers.sort(String.CASE_INSENSITIVE_ORDER);
         buttonLabels = visiblePlayers.isEmpty() ? List.of("Vanilla") : List.copyOf(visiblePlayers);
     }
 
