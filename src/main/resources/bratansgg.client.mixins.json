@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "pl.xsqezz.bratansgg.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MouseMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
